@@ -3,7 +3,7 @@ use utils::get_input;
 fn main() {
     let depth_mesurements = get_input::<u32>();
     println!(
-        "Computing the steep of the following input: {:?}.",
+        "Computing the steepness of the following input: {:?}.",
         depth_mesurements
     );
 
