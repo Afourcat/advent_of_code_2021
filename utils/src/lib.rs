@@ -7,7 +7,7 @@ pub fn get_input<T>() -> Vec<T>
 where
     T: FromStr,
 {
-    let mut args_iter = std::env::args().skip(2);
+    let mut args_iter = std::env::args().skip(1);
     let file_path = args_iter.next().expect("An argument must be provided.");
 
     println!("Trying to open file {}.", file_path);
