@@ -7,18 +7,8 @@ fn main() {
         depth_mesurements
     );
 
-    mesure_steepness(&depth_mesurements);
+    mesure_steepness_sliding_window::<1>(&depth_mesurements);
     mesure_steepness_sliding_window::<3>(&depth_mesurements);
-}
-
-fn mesure_steepness(depth_mesurements: &[u32]) {
-    let output =
-        depth_mesurements.windows(2).fold(
-            0,
-            |acc, window| if window[0] < window[1] { acc + 1 } else { acc },
-        );
-
-    println!("Output: {}", output);
 }
 
 fn mesure_steepness_sliding_window<const N: usize>(depth_mesurements: &[u32]) {
