@@ -1,5 +1,4 @@
 use std::str::FromStr;
-use std::ops::Deref;
 
 use utils::get_input;
 
@@ -34,7 +33,6 @@ impl FromStr for Command {
 struct SubMarin {
     depth: u32,
     horizontal_position: u32,
-    aim: u32,
 }
 
 impl SubMarin {
@@ -44,12 +42,9 @@ impl SubMarin {
 
     fn execute(&mut self, command: Command) {
         match command {
-            Command::Forward(x) => {
-                self.horizontal_position += x;
-                self.depth += x * self.aim;
-            }
-            Command::Up(x) => self.aim -= x,
-            Command::Down(x) => self.aim += x,
+            Command::Forward(x) => self.horizontal_position += x,
+            Command::Up(x) => self.depth -= x,
+            Command::Down(x) => self.depth += x,
         }
     }
 }
