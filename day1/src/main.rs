@@ -8,7 +8,7 @@ fn main() {
     );
 
     mesure_steepness(&depth_mesurements);
-    mesure_steepness_sliding_window(&depth_mesurements);
+    mesure_steepness_sliding_window::<3>(&depth_mesurements);
 }
 
 fn mesure_steepness(depth_mesurements: &[u32]) {
@@ -21,10 +21,10 @@ fn mesure_steepness(depth_mesurements: &[u32]) {
     println!("Output: {}", output);
 }
 
-fn mesure_steepness_sliding_window(depth_mesurements: &[u32]) {
+fn mesure_steepness_sliding_window<const N: usize>(depth_mesurements: &[u32]) {
     let output = depth_mesurements
-        .windows(3)
-        .map(|window| window[0] + window[1] + window[2])
+        .windows(N)
+        .map(|window| window.into_iter().sum())
         .collect::<Vec<u32>>()
         .windows(2)
         .fold(
