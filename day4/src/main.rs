@@ -20,11 +20,11 @@ fn main() {
     play(rollings, boards);
 }
 
-fn play<const N: usize>(mut rollings: impl Iterator<Item = u8>, mut boards: Vec<Board<N>>)
+fn play<const N: usize>(rollings: impl Iterator<Item = u8>, mut boards: Vec<Board<N>>)
 where
     [(); N * N]: Sized,
 {
-    while let Some(roll) = rollings.next() {
+    for roll in rollings {
         for board in &mut boards {
             board.mark(roll);
         }
