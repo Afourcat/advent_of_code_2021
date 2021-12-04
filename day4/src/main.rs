@@ -141,7 +141,7 @@ fn main() {
         for board in &mut boards {
             board.mark(roll);
         }
-        if let Some(winning_board) = board_won(&boards) {
+        if let Some(winning_board) = boards.iter().find(|board| board.won()) {
             let winning_score = winning_board.get_score();
             println!(
                 "Board:\n{}\nwon with score: {} * {} = {}.",
@@ -153,18 +153,6 @@ fn main() {
             break;
         }
     }
-}
-
-fn board_won<const N: usize>(boards: &[Board<N>]) -> Option<&Board<N>>
-where
-    [(); N * N]: Sized,
-{
-    for board in boards {
-        if board.won() {
-            return Some(board);
-        }
-    }
-    None
 }
 
 fn get_boards<const N: usize>(inputs: &[String]) -> Vec<Board<N>>
