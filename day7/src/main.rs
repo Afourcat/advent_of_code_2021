@@ -14,13 +14,11 @@ fn main() {
         .filter_map(|e| (*e).parse::<u32>().ok())
         .collect();
 
-    // We may just find the minimum and the maximum of the
     let (min, max) = (
         *positions.iter().min().expect("No min value."),
         *positions.iter().max().expect("No max value."),
     );
 
-    // Taking a middle slice of positions in order to save time.
     let fuel: u32 = (min..max)
         .map(|tested_position| {
             positions
