@@ -1,0 +1,11 @@
+number 1        => length of 2
+number 4        => length of 4
+number 7        => length of 3
+number 8        => length of 7
+segment `a`     => in 7 but not in 1
+number 3        => has a length of 5 two common segment with 1 and an `a` segment
+number 5        => has a length of 5 and 3 common segment with `4`
+number 2        => has a length of 5 ans is not `5` and `3`
+number 9        => length of 6 and all common point with `4`
+number 0        => length of 6 that has all common point with `1`
+number 6        => the last number
